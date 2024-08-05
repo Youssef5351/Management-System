@@ -10,11 +10,11 @@
   ],
   "routes": [
     { "src": "/api/(.*)", "dest": "server/index.js" },
-    { "src": "^/static/(.*)", "dest": "client/static/$1" },
-    { "src": "^/favicon.ico", "dest": "client/favicon.ico" },
-    { "src": "^/manifest.json", "dest": "client/manifest.json" },
-    { "src": "^/asset-manifest.json", "dest": "client/asset-manifest.json" },
-    { "src": "^/(.*).png", "dest": "client/$1.png" },
-    { "src": "^/(.*)", "dest": "client/index.html" }
+    { "src": "^/static/(.*)", "dest": "client/build/static/$1" },
+    { "src": "^/favicon.ico", "dest": "client/build/favicon.ico" },
+    { "src": "^/manifest.json", "dest": "client/build/manifest.json" },
+    { "src": "^/asset-manifest.json", "dest": "client/build/asset-manifest.json" },
+    { "src": "^/(.*).png", "dest": "client/build/$1.png" },
+    { "src": "^/(.*)", "dest": "client/build/index.html" }
   ]
 }
