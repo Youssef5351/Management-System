@@ -9,15 +9,23 @@ require('dotenv').config();
 const moment = require('moment-timezone');
 
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 
-app.use(cors({ origin: 'http://localhost:3001', credentials: true }));
+app.use(cors({ 
+  origin: process.env.NODE_ENV === 'production' 
+    ? 'https://management-system52.vercel.app' 
+    : 'http://localhost:3001', 
+  credentials: true 
+}));
 app.use(bodyParser.json());
 app.use(session({
   secret: process.env.SESSION_SECRET || 'fallback_secret_key',
   resave: false,
   saveUninitialized: false,
-  cookie: { secure: process.env.NODE_ENV === 'production' }
+    cookie: { 
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
+  }
 }));
 
 const users = [
